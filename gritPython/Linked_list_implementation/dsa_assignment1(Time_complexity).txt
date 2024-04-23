@@ -1,0 +1,90 @@
+Question 1:
+
+for i in range(n):
+    i = i*2
+
+Answer: 
+Let's assume the value of n to be 2,3,4
+When n = 2 , the for loop runs 2 times i.e. for i = 0,1 so the time complexity is O(2)
+When n = 3 , the for loop runs 3 times i.e. for i = 0,1,2 so the time complexity is O(3)
+When n = 4 , the for loop runs 4 times i.e. for i = 0,1,2,3 so the time complexity is O(4)
+
+Thus, the time complexity of the given program is O(n)
+
+
+Question 2:
+def fact_iter(n):
+    "assumes n an int >= 0"
+    answer = 1  
+    while n > 1:
+        answer *= n
+        n -= 1              
+        return answer
+
+Answer:
+Let's assume the value of n to be 2,3,4
+When n = 2 , the while loop runs once i.e.  so the time complexity is O(1)
+When n = 3 , the while loop runs 2 times i.e.  so the time complexity is O(2)
+When n = 4 , the while loop runs 3 times i.e.  so the time complexity is O(3)
+
+Thus considering the overall time complexity of the program it becomes O(n-1), but we do not consider constants in Big O notation
+so the worst time complexity is O(n)
+
+
+Question 3:
+A = [1, 2, 3, 4]
+B = [2, 3, 4, 5, 6]
+for i in A:
+    for j in B:
+        if i<j:
+        print('{}, {}'.format(i, j))
+
+Answer:
+Let m = len(A) = 4 and n = len(B) = 5
+The first for loop runs m times but the second for loop only runs when the element of A is less than element of B.
+For the worst case scenario, if all the elements of list B are greater than that of list A then, the second loop runs n times.
+Thus, the worst time complexity becomes O(m*n).
+
+For the above list of elements.
+When i = 1, j = 2,3,4,5,6 satistifes the condition so the second loop runs 5 times.
+When i = 2, j = 3,4,5,6 satistifes the condition so the second loop runs 4 times.
+When i = 3, j = 4,5,6 satistifes the condition so the second loop runs 3 times.
+when i = 4, j = 5,6 satistifes the condition so the second loop runs 2 times.
+Thus the 14 iterations are required.
+
+
+Question 4:
+
+L = [1, 2, 3, 4, 5, 6, 7, 8]
+for i in range(len(L)//2):
+    other = len(L) - i - 1
+    temp = L[i]
+    L[i] = L[other]
+    L[other] = temp
+
+Answer:
+In the above program len(L) = 8, so len(L)//2 = 4.
+So, the for loop iterates form 0 to 4 i.e. 4 times.
+Considering n number of elements in L, the loop runs n/2 times so the worst time complexity is O(n/2).
+Considering the dominant term only, the time complexity is O(n)
+
+
+Question 5:
+def fib(n):
+    if n==1 or n==0:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+Answer:
+
+For the base case when n = 1 or n = 0 then the time complexity is O(1).
+When the value of n is greater than 1 than the function is called 2 times recursively.
+
+For example:
+When n = 4 -> fib(3) and fib(2) are called.
+fib(3) further calls fib(2) and fib(1). Simillarly, fib(2) calls fib(1) and fib(0)
+fib(2) from fib(3) further calls fib(1) and fib(0)
+
+When this is considered as a tree, at k level there are 2^k nodes.
+Thus the time complexity of the program is O(2^n).
